@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Employee</title>
+ <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <link rel="stylesheet" href="rcss/bootstrap.css" />
+        <link rel="stylesheet" href="rcss/fontawesome.css" />
+        <link rel="stylesheet" href="rcss/fontawesome-all.min.css" />
+        <script src="rjs/jquery.js"></script>
+        <script src="rjs/bootstrap.js"></script>
+        <script src="rjs/bootbox.min.js"></script>
+        <script src="rjs/popper.js"></script>
+    
+        
+
+  <style>
+   body{
+	margin-top: 15px;
+	background: url("images/temp4.jpeg");
+	}
+	.here{
+		font-family: times new roman;
+		color: darkblue;
+		font-weight: bold;
+		font-size: 20px;
+	 }
+	 #addempDialog:hover{
+    background-color: navy;
+    color: white;
+	}
+		 #back:hover{
+    background-color: navy;
+    color: white;
+	}
+	
+    .cliente {
+      margin-top: 15px;
+      margin-bottom: 2px;
+      border: 5px solid blue;
+      border-radius: 2px;
+	  color: navy;
+	  font-size:18px;
+	  background: white;
+	  }
+	 
+
+    #contactInfo {
+      margin: 10px 10px 5px;
+	  padding:10px;
+    }
+
+    h5 {
+      color: blue;
+    }
+	body{
+	margin-top: 15px;
+	}
+  </style>
+
+</head>
+
+<body>
+ 
+  <div class="container ">
+    <div class="row">
+      <div class="col-xs-12 text-right">
+        <button class="btn btn-primary" id="addempDialog">Add employee Details</button>
+	<a href="home.html">
+		  <button class="btn btn-info btn-large" id="back">back</button>
+		  </a>
+      </div>
+    </div>
+  </div>
+    
+    
+  <div class="container ">
+	<div class="row">
+		<div class="col col-xs-12">
+			<div id="empData"></div>
+		</div>
+	</div>
+  </div>
+    
+    
+  <div id="addempModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times</button>
+        
+        </div>
+        <div class="modal-body">
+		<div class="here">
+          <form class="form-horizontal" name="addForm" id="addForm" role="form">
+            <div class="form-group ">
+              <label class="control-label col-xs-3 ">Employee name:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" name="id" id="id" class="form-control field" placeholder="Enter the employee name" required>
+              </div>
+            </div>
+              
+            <div class="form-group ">
+              <label class="control-label col-xs-3 ">Department:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" name="name" id="name" class="form-control field" placeholder="Enter the department" required>
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label class="control-label col-xs-3 ">Employee phone number:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="empno" class="form-control field" placeholder="Enter your phone number" required>
+              
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label class="control-label col-xs-3 ">Designation :
+              
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="desig" class="form-control field">
+              </div>
+            </div>
+              
+            <div class="form-group ">
+              <div class="col-xs-8 col-xs-offset-4 ">
+			    <p class="validateTips text-danger"></p>
+                <input type="button" name="submit " value="Add" class="btn btn-info" id="addemp">
+              </div>
+            </div>
+              
+          </form>
+        </div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+    
+    
+    
+    <!--UPDAte-->
+  <div id="updateempModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+		 <h4>
+            <span class="glyphicon glyphicon-edit"></span> Edit Item Details</h4>
+          <button type="button" class="close" data-dismiss="modal">x</button>
+         
+        </div>
+        <div class="modal-body">
+		<div class="aqua">
+		<div class="here">
+          <form class="form-horizontal" name="editForm" id="editForm" role="form">
+            <div class="form-group">
+              <label class="control-label col-xs-4">Employee name :
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type="text" name="id" id="editid" class="form-control field">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Department:
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="name" id="editname" class="form-control field" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Employee phone number:
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type="number" name="desig" id="editempno" class="form-control field" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Designation :
+               
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="desig" id="editdesig" class="form-control field" />
+              </div>
+            </div>
+           
+            <div class="form-group">
+              <div class="col-xs-8 col-xs-offset-4 ">
+				 <p class="validateTips text-danger">* All form fields are required.</p>
+                <input type="button" name="update" value="Update" id="btnUpdateemp" class="btn btn-info">
+                <input type="button" name="cancel" value="Cancel" id="btnCancel" class="btn btn-danger" data-dismiss="modal">
+              </div>
+            </div>
+          </form>
+        </div>
+		</div>
+		</div>
+      </div>
+    </div>
+  </div>
+    
+   
+  
+  
+  <!-- scripting -->
+  
+  <script>
+    class emp {
+      constructor(id, name, empno, desig) {
+        this.id = id;
+        this.name = name;
+        this.empno = empno;
+        this.desig = desig;
+      }
+    }
+
+    $(function () {
+      var empArr = [];	
+      $("#addempDialog").click(function () {
+        addempForm();
+      });
+      /* Function to displdesig addempForm as dialog box, and initilize all form input elements with empty values*/
+      function addempForm() {
+        $("#addempModel").modal();
+        $(".validateTips").text("All form fields are required.");
+        $("#id").val("");
+        $("#name").val("");
+        $("#empno").val("");
+        $("#desig").val("");
+      }
+      /* Function to show empty message */
+      function showempEmptyMessage() {
+        $("#empData").html("<h4 class='text-center text-muted'>All the best for your journey....</h4>");
+      }
+
+
+      /* This function is used to displdesig the contents of the arrdesig */
+      showemps();
+      function showemps() {
+        empArr = JSON.parse(localStorage.getItem("emps"));
+        if (empArr != null && empArr.length != 0) {
+          displdesig();
+        } else {
+          showempEmptyMessage();
+        }
+      }
+
+	
+      /* Function to displdesig boxes */
+     function displdesig() {
+        var str = "";
+        $.each(empArr, function (index, emp) {
+          str += "<div class='col-xs-4'><div class='cliente'><div id='contactInfo'> ";
+          str += '<b>Employee name: </b> &nbsp' + emp.id + "<br/> <br/>";
+          str += '<b>Department: </b> &nbsp' + emp.name + "<br/> <br/>";
+          str += '<b>Employee phone number: </b> &nbsp' + emp.empno + "<br/> <br/>";
+          str += '<b>Designation: </b> &nbsp' + emp.desig + "<br/> <br/>";
+          str += "<div class='text-right'><i class='fa fa-edit edit' id=" + index + "></i> <i class='fa fa-trash remove'  id=" + index + "></i></div>";
+          str += "</div></div></div>";
+          $("#empData").html(str);
+        });
+     } 
+	 
+      /* Function to add emp */
+      $("#addemp").click(function () {
+        var id = $("#id");
+        var name = $("#name");
+        var empno = $("#empno");
+        var desig = $("#desig");
+
+        if (!validateFormData(id, name, empno, desig)) {
+          $("#addempModel").modal();
+          $(".field").focus(function () {
+            $(".field").removeClass("ui-state-error");
+          });
+        } else {
+          $("#addempModel").modal('hide');
+          var vid = $("#id").val();
+          var vname = $("#name").val();
+          var vempno = $("#empno").val();
+          var vdesig = $("#desig").val();
+    
+          empArr = JSON.parse(localStorage.getItem("emps"));
+          if (empArr == null) {
+            empArr = [];
+          }
+          var empRef = new emp(vid, vname, vempno, vdesig);
+          empArr.push(empRef);
+          localStorage.setItem("emps", JSON.stringify(empArr));
+          showemps();
+        }
+      });
+      /* Function to add emp */
+      /* To validate form input params */
+      function validateFormData(id, name, empno, desig) {
+	  if (id.val().length < 5 || id.val().length > 20) {
+          $(".validateTips").html("<b><i>Length of Name must be between 5 and 20</i></b>");
+          name.addClass("ui-state-error");
+          return false;
+        }
+        else if (name.val().length < 3 || name.val().length > 20) {
+          $(".validateTips").text("Length of Item must be between 5 and 20");
+          name.addClass("ui-state-error");
+          return false;
+        } else if (desig.val().length < 3) {
+			$(".validateTips").html("<b>Designation not appropriate</b>");
+          city.addClass("ui-state-error");
+          return false;
+        } 
+        return true;
+      }
+      /* End of validation of form input params*/
+      /*Delete item  based on given position*/
+      function deleteemp(position) {
+        empArr.splice(position, 1);
+        if (empArr.length == 0)
+          localStorage.setItem("emps", JSON.stringify(null));
+        else
+          localStorage.setItem("emps", JSON.stringify(empArr));
+      }
+      /* End of delete item */
+      /* Delete emp event */
+      $("#empData").on('click', '.remove', function () {
+        var position = $(this).attr('id');
+        bootbox.confirm("Are you sure do you want delete <b>" + empArr[position].id + "</b> ? ", function (result) {
+          if (result) {
+            deleteemp(position);
+            showemps();
+          }
+        });
+      });
+	  var position=-1;
+      /* End of delete emp */
+      /* Edit item details */
+      $("#empData").on('click', '.edit', function () {
+        position = $(this).attr('id');
+        $("#updateempModal").modal();
+        $(".validateTips").text("All form fields are required.");
+        $("#editid").val(empArr[position].id);
+        $("#editname").val(empArr[position].name);
+        $("#editempno").val(empArr[position].empno);
+        $("#editdesig").val(empArr[position].desig);
+      
+      });
+      /* End of edit emp details */
+      /*Update item */
+      $("#btnUpdateemp").click(function () {
+        var uid = $("#editid");
+        var uname = $("#editname");
+        var uempno = $("#editempno");
+        var udesig = $("#editdesig");
+		
+        if (!validateFormData(uid, uname, uempno, udesig)) {
+          $("#updateempModel").modal();
+          $(".field").focus(function () {
+            $(".field").removeClass("ui-state-error");
+          });
+        } else {
+		  
+          var uid = $("#editid").val();
+          var uname = $("#editname").val();
+          var uempno = $("#editempno").val();
+          var udesig = $("#editdesig").val();
+          $.each(empArr,function (index,emp) {
+			if(index==position)
+			{
+				emp.id = uid;
+				emp.name = uname;
+				emp.empno = uempno;
+				emp.desig = udesig;
+			}
+			})
+          
+          localStorage.setItem("emps", JSON.stringify(empArr));
+          $("#updateempModal").modal('hide');
+          bootbox.alert("Data is updated successfully....");
+          showemps();
+        }
+      });
+      /* End of update emp */
+    
+
+    });
+
+  </script>
+  
+</body>
+
+</html>

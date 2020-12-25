@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Welcome</title>
+ <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <link rel="stylesheet" href="rcss/bootstrap.css" />
+        <link rel="stylesheet" href="rcss/fontawesome.css" />
+        <link rel="stylesheet" href="rcss/fontawesome-all.min.css" />
+        <script src="rjs/jquery.js"></script>
+        <script src="rjs/bootstrap.js"></script>
+        <script src="rjs/bootbox.min.js"></script>
+        <script src="rjs/popper.js"></script>
+    
+        
+
+  <style>
+	body{
+	margin-top: 15px;
+	background: url("images/temp1.jfif");
+	}
+	.right{
+	 font-family: times new roman;
+	 color: darkblue;
+	 font-weight: bold;
+	 font-size: 15px;
+	 }
+
+    .cliente {
+      margin-top: 15px;
+      margin-bottom: 2px;
+      border: 5px inset blue;
+      border-radius: 2px;
+	  color: darkblue;
+	  background:white;
+	  font-family: times new roman;
+	  font-size:16px;
+	  
+    }
+
+    #contactInfo {
+      margin: 10px 10px 5px;
+	  padding:10px;
+    }
+
+    h5 {
+      color: blue;
+    }
+	#back{
+	align: right;
+	}
+  </style>
+
+</head>
+
+<body>
+ 
+  <div class="container ">
+    <div class="row">
+      <div class="col-xs-12 ">
+        <button class="btn btn-primary btn-large" id="addmanageDialog">Add visit Details</button>
+		 <a href="home.html">
+		  <button class="btn btn-info btn-large" id="back">back</button>
+		  </a>
+		  </div>
+      </div>
+    </div>
+  </div>
+    
+    
+  <div class="container ">
+	<div class="row">
+		<div class="col col-xs-12">
+			<div id="manageData"></div>
+		</div>
+	</div>
+  </div>
+    
+    
+  <div id="addmanageModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times</button>
+      
+        </div>
+        <div class="modal-body">
+		<div class="right">
+          <form class="form-horizontal" name="addForm" id="addForm" role="form">
+            <div class="form-group ">
+              <label class="control-label col-xs-3 ">Visit date:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="date" name="id" id="id" class="form-control field" required>
+              </div>
+            </div>
+              
+            <div class="form-group ">
+              <label class="control-label col-xs-3 ">Visitor name:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" name="name" id="name" class="form-control field" placeholder="Enter the visitor name" required>
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label class="control-label col-xs-3 ">Employee name:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="employee name" class="form-control field" placeholder="Enter the employee name" required>
+              
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label class="control-label col-xs-3 ">Purpose of visit :
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="desig" class="form-control field" placeholder="Enter the purpose of your visit" required>
+              </div>
+            </div>
+              
+			   <div class="form-group">
+              <label class="control-label col-xs-3 ">Visit duration:
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="time" id="come" class="form-control field" placeholder="Enter the duration of visit" required>
+              </div>
+            </div>
+			
+			    <div class="form-group">
+              <label class="control-label col-xs-3 ">Comments :
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="comment" class="form-control field">
+              </div>
+            </div>
+			  
+			  
+            <div class="form-group ">
+              <div class="col-xs-8 col-xs-offset-4 ">
+			      <p class="validateTips text-danger"></p>
+                <input type="button" name="submit " value="Add" class="btn btn-primary" id="addmanage">
+              </div>
+            </div>
+              
+          </form>
+        </div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+    
+    
+    
+    <!--UPDAte-->
+  <div id="updatemanageModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+      
+          <h4>
+            <span class="glyphicon glyphicon-edit"></span> Edit visit Details</h4>
+			    <button type="button" class="close" data-dismiss="modal">x</button>
+        </div>
+        <div class="modal-body">
+			<div class="right">
+          <form class="form-horizontal" name="editForm" id="editForm" role="form">
+            <div class="form-group">
+              <label class="control-label col-xs-4">Visit date:
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type="date" name="id" id="editid" class="form-control field">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Visitor name :
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="name" id="editname" class="form-control field" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Employee name:
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type="text" name="desig" id="editmanageno" class="form-control field" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Purpose of visit :
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="desig" id="editdesig" class="form-control field" />
+              </div>
+            </div>
+			
+			 <div class="form-group">
+              <label class="control-label col-xs-3 ">Visit Duration :
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="time" id="editcome" class="form-control field" placeholder="Coming From" required>
+              </div>
+            </div>
+			
+			<div class="form-group">
+              <label class="control-label col-xs-4">Comments:
+           
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="vcmnt" id="editcomment" class="form-control field" />
+              </div>
+            </div>
+			  
+           
+            <div class="form-group">
+              <div class="col-xs-8 col-xs-offset-4 ">
+				 <p class="validateTips text-danger">*All form fields are required.</p>
+                <input type="button" name="update" value="Update" id="btnUpdatemanage" class="btn btn-success">
+                <input type="button" name="cancel" value="Cancel" id="btnCancel" class="btn btn-blue" data-dismiss="modal">
+              </div>
+            </div>
+          </form>
+        </div>
+		</div>
+      </div>
+    </div>
+  </div>
+    
+   
+  
+  
+  <!-- scripting -->
+  
+  <script>
+    class manage {
+      constructor(id, name, manageno, desig, come,comment) {
+        this.id = id;
+        this.name = name;
+        this.manageno = manageno;
+        this.desig = desig;
+        this.come = come;
+        this.comment = comment;
+      }
+    }
+
+    $(function () {
+      var manageArr = [];	
+      $("#addmanageDialog").click(function () {
+        addmanageForm();
+      });
+      /* Function to displdesig addmanageForm as dialog box, and initilize all form input elements with managety values*/
+      function addmanageForm() {
+        $("#addmanageModel").modal();
+        $(".validateTips").text("* All form fields are required.");
+        $("#id").val("");
+        $("#name").val("");
+        $("#manageno").val("");
+        $("#desig").val("");
+        $("#come").val("");
+        $("#comment").val("");
+      }
+      /* Function to show managety message */
+      function showmanagemanagetyMessage() {
+        $("#manageData").html("<h4 class='text-center text-muted'>Hope you have a pleasant visit...</h4>");
+      }
+
+
+      /* This function is used to displdesig the contents of the arrdesig */
+      showmanages();
+      function showmanages() {
+        manageArr = JSON.parse(localStorage.getItem("manages"));
+        if (manageArr != null && manageArr.length != 0) {
+          displdesig();
+        } else {
+          showmanagemanagetyMessage();
+        }
+      }
+
+	
+      /* Function to displdesig boxes */
+     function displdesig() {
+        var str = "";
+        $.each(manageArr, function (index, manage) {
+          str += "<div class='col-xs-4'><div class='cliente'><div id='contactInfo'> ";
+          str += '<b>Visit date: </b> &nbsp' + manage.id + "<br/> <br/>";
+          str += '<b>Visitor name: </b> &nbsp' + manage.name + "<br/> <br/>";
+          str += '<b>Employee name: </b> &nbsp' + manage.manageno + "<br/> <br/>";
+          str += '<b>Purpose of visit: </b> &nbsp' + manage.desig + "<br/> <br/>";
+          str += '<b>Visit duration: </b> &nbsp' + manage.come + "<br/> <br/>";
+          str += '<b>Comments: </b> &nbsp' + manage.comment + "<br/> <br/>";
+          str += "<div class='text-right'><i class='fa fa-edit edit' id=" + index + "></i> <i class='fa fa-trash remove'  id=" + index + "></i></div>";
+          str += "</div></div></div>";
+          $("#manageData").html(str);
+        });
+     } 
+	 
+      /* Function to add manage */
+      $("#addmanage").click(function () {
+        var id = $("#id");
+        var name = $("#name");
+        var manageno = $("#manageno");
+        var desig = $("#desig");
+        var come = $("#come");
+        var comment = $("#comment");
+
+        if (!validateFormData(id, name, manageno, desig)) {
+          $("#addmanageModel").modal();
+          $(".field").focus(function () {
+            $(".field").removeClass("ui-state-error");
+          });
+        } else {
+          $("#addmanageModel").modal('hide');
+          var vid = $("#id").val();
+          var vname = $("#name").val();
+          var vmanageno = $("#manageno").val();
+          var vdesig = $("#desig").val();
+          var vcome = $("#come").val();
+          var vcomment = $("#comment").val();
+    
+          manageArr = JSON.parse(localStorage.getItem("manages"));
+          if (manageArr == null) {
+            manageArr = [];
+          }
+          var manageRef = new manage(vid, vname, vmanageno, vdesig, vcome, vcomment);
+          manageArr.push(manageRef);
+          localStorage.setItem("manages", JSON.stringify(manageArr));
+          showmanages();
+        }
+      });
+      /* Function to add manage */
+      /* To validate form input params */
+      function validateFormData(id, name, manageno, desig) {
+	 if (desig.val().length < 3) {
+			$(".validateTips").html("<b>Entered value is not appropriate</b>");
+          city.addClass("ui-state-error");
+          return false;
+        } 
+        return true;
+      }
+      /* End of validation of form input params*/
+      /*Delete item  based on given position*/
+      function deletemanage(position) {
+        manageArr.splice(position, 1);
+        if (manageArr.length == 0)
+          localStorage.setItem("manages", JSON.stringify(null));
+        else
+          localStorage.setItem("manages", JSON.stringify(manageArr));
+      }
+      /* End of delete item */
+      /* Delete manage event */
+      $("#manageData").on('click', '.remove', function () {
+        var position = $(this).attr('id');
+        bootbox.confirm("Are you sure do you want delete <b>" + manageArr[position].name + "</b> ? ", function (result) {
+          if (result) {
+            deletemanage(position);
+            showmanages();
+          }
+        });
+      });
+	  var position=-1;
+      /* End of delete manage */
+      /* Edit item details */
+      $("#manageData").on('click', '.edit', function () {
+        position = $(this).attr('id');
+        $("#updatemanageModal").modal();
+        $(".validateTips").text("* All form fields are required.");
+        $("#editid").val(manageArr[position].id);
+        $("#editname").val(manageArr[position].name);
+        $("#editmanageno").val(manageArr[position].manageno);
+        $("#editdesig").val(manageArr[position].desig);
+        $("#editcome").val(manageArr[position].come);
+        $("#editcomment").val(manageArr[position].comment);
+      
+      });
+      /* End of edit manage details */
+      /*Update item */
+      $("#btnUpdatemanage").click(function () {
+        var uid = $("#editid");
+        var uname = $("#editname");
+        var umanageno = $("#editmanageno");
+        var udesig = $("#editdesig");
+        var ucome = $("#editcome");
+        var ucomment = $("#editcomment");
+		
+        if (!validateFormData(uid, uname, umanageno, udesig)) {
+          $("#updatemanageModel").modal();
+          $(".field").focus(function () {
+            $(".field").removeClass("ui-state-error");
+          });
+        } else {
+		  
+          var uid = $("#editid").val();
+          var uname = $("#editname").val();
+          var umanageno = $("#editmanageno").val();
+          var udesig = $("#editdesig").val();
+          var ucome = $("#editcome").val();
+          var ucomment = $("#editcomment").val();
+          $.each(manageArr,function (index,manage) {
+			if(index==position)
+			{
+				manage.id = uid;
+				manage.name = uname;
+				manage.manageno = umanageno;
+				manage.desig = udesig;
+				manage.come = ucome;
+				manage.comment = ucomment;
+			}
+			})
+          
+          localStorage.setItem("manages", JSON.stringify(manageArr));
+          $("#updatemanageModal").modal('hide');
+          bootbox.alert("Data is updated successfully....");
+          showmanages();
+        }
+      });
+      /* End of update manage */
+    
+
+    });
+
+  </script>
+  
+</body>
+
+</html>

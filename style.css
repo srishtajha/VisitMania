@@ -1,0 +1,36 @@
+body{
+    padding: 0%;
+    margin: 0%;
+    font-family: cursive;
+}
+header{
+    background-color: yellow;
+}
+#brand{
+    font-family: comic sans MS;
+    font-size: 38px;
+    color: navy;
+}
+#list{
+    color: blue;
+    font-style: bold;
+    font-family: times new roman;
+    font-size: 20px;
+}
+#list:hover{
+    background-color: navy;
+    color: white;
+}
+.menu-right-btn{
+    font-size: 20px;
+    background-color: transparent;
+    padding: 15px 30px;
+    margin-right: 4%;
+}
+.menu-right-btn:hover{
+    color: white;
+    background-color: navy;
+}
+.back{
+    background-color: aqua;
+}

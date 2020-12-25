@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Visitor</title>
+ <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <link rel="stylesheet" href="rcss/bootstrap.css" />
+        <link rel="stylesheet" href="rcss/fontawesome.css" />
+        <link rel="stylesheet" href="rcss/fontawesome-all.min.css" />
+        <script src="rjs/jquery.js"></script>
+        <script src="rjs/bootstrap.js"></script>
+        <script src="rjs/bootbox.min.js"></script>
+        <script src="rjs/popper.js"></script>
+    
+        
+
+  <style>
+		body{
+	margin-top: 15px;
+	background: url("images/temp4.jpeg");
+	}
+	
+	.present{
+	 font-family: times new roman;
+	 color: darkblue;
+	 font-weight: bold
+	 font-size: 20px;
+	 }
+    .cliente {
+      margin-top: 12px;
+      margin-bottom: 8px;
+      border: 5px solid darkblue;
+      border-radius: 4px;
+	  background: white;
+	  color:blue;
+	  
+    }
+
+    #contactInfo {
+      margin: 10px 10px 5px;
+	  padding:10px;
+    }
+
+    h5 {
+      color: blue;
+    }
+  </style>
+
+</head>
+
+<body>
+ 
+  <div class="container ">
+    <div class="row">
+      <div class="col-xs-12 text-right">
+        <button class="btn btn-lg btn-primary mt-2 mb-2" id="addvisitorDialog"><b>Add Visitor Details..</b></button>
+		 <a href="home.html">
+		  <button class="btn btn-info btn-lg" id="back">back</button>
+		  </a>
+      </div>
+    </div>
+  </div>
+		
+  <div class="container ">
+	<div class="row">
+		<div class="col col-xs-12">
+			<div id="visitorData"></div>
+		</div>
+	</div>
+  </div>
+    
+    
+  <div id="addvisitorModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times</button>
+
+        </div>
+        <div class="modal-body">
+		<div class="present">
+          <form class="form-horizontal" name="addForm" id="addForm" role="form">
+            <div class="form-group ">
+              <label class="control-label col-xs-3 ">Visitor name:<em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" name="id" id="id" class="form-control field" placeholder="Enter the visitor name" required />
+              </div>
+            </div>
+              
+            <div class="form-group ">
+              <label class="control-label col-xs-3 ">Visitor phone number:<em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" name="name" id="name" class="form-control field" placeholder="Enter the visitor phone number" required />
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label class="control-label col-xs-3 ">Visitor driver license number:<em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="visitorno" class="form-control field" placeholder="Enter the license number" required />
+              
+              </div>
+            </div>
+              
+            <div class="form-group">
+              <label class="control-label col-xs-3 ">Visitor company name :
+                <em>*</em>
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="desig" class="form-control field" placeholder="Enter the company name" required />
+              </div>
+            </div>
+              
+			   <div class="form-group">
+              <label class="control-label col-xs-3 ">Coming From :
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="come" class="form-control field">
+              </div>
+            </div>
+			  
+			  
+            <div class="form-group ">
+              <div class="col-xs-8 col-xs-offset-4 ">
+			     <p class="validateTips text-danger"></p>
+                <input type="button" name="submit " value="Add" class="btn btn-lg btn-primary" id="addvisitor">
+				       
+              </div>
+            </div>
+              
+          </form>
+        </div>
+		</div>
+      </div>
+    </div>
+  </div>
+
+    
+    
+    
+    <!--UPDAte-->
+  <div id="updatevisitorModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4>
+            <span class="glyphicon glyphicon-edit"></span> Edit Item Details</h4>
+			          <button type="button" class="close" data-dismiss="modal">x</button>
+        </div>
+        <div class="modal-body">
+		<div class="present">
+          <form class="form-horizontal" name="editForm" id="editForm" role="form">
+            <div class="form-group">
+              <label class="control-label col-xs-4">Visitor name :
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type="text" name="id" id="editid" class="form-control field" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Visitor phone number:
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="name" id="editname" class="form-control field" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Visitor driver license number:
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type="number" name="desig" id="editvisitorno" class="form-control field" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-4">Visitor company name :
+                <em>*</em>
+              </label>
+              <div class="col-xs-8">
+                <input type='text' name="desig" id="editdesig" class="form-control field" required />
+              </div>
+            </div>
+			
+			 <div class="form-group">
+              <label class="control-label col-xs-3 ">Coming From :
+           
+              </label>
+              <div class="col-xs-9 ">
+                <input type="text" id="editcome" class="form-control field" placeholder="Coming From">
+              </div>
+            </div>
+			  
+           
+            <div class="form-group">
+              <div class="col-xs-8 col-xs-offset-4 ">
+				 <p class="validateTips text-danger"><i>* All form fields are required.</i></p>
+                <input type="button" name="update" value="Update" id="btnUpdatevisitor" class="btn btn-primary">
+                <input type="button" name="cancel" value="Cancel" id="btnCancel" class="btn btn-danger" data-dismiss="modal">
+              </div>
+            </div>
+          </form>
+        </div>
+		</div>
+      </div>
+    </div>
+  </div>
+    
+   
+  
+  
+  <!-- scripting -->
+  
+  <script>
+    class visitor {
+      constructor(id, name, visitorno, desig, come) {
+        this.id = id;
+        this.name = name;
+        this.visitorno = visitorno;
+        this.desig = desig;
+        this.come = come;
+      }
+    }
+
+    $(function () {
+      var visitorArr = [];	
+      $("#addvisitorDialog").click(function () {
+        addvisitorForm();
+      });
+      /* Function to displdesig addvisitorForm as dialog box, and initilize all form input elements with visitorty values*/
+      function addvisitorForm() {
+        $("#addvisitorModel").modal();
+        $(".validateTips").text(" *All form fields are required.");
+        $("#id").val("");
+        $("#name").val("");
+        $("#visitorno").val("");
+        $("#desig").val("");
+        $("#come").val("");
+      }
+      /* Function to show visitorty message */
+      function showvisitorvisitortyMessage() {
+        $("#visitorData").html("<h4 class='text-center text-muted'>We heartly welcome you all...</h4>");
+      }
+
+
+      /* This function is used to displdesig the contents of the arrdesig */
+      showvisitors();
+      function showvisitors() {
+        visitorArr = JSON.parse(localStorage.getItem("visitors"));
+        if (visitorArr != null && visitorArr.length != 0) {
+          displdesig();
+        } else {
+          showvisitorvisitortyMessage();
+        }
+      }
+
+	
+      /* Function to displdesig boxes */
+     function displdesig() {
+        var str = "";
+        $.each(visitorArr, function (index, visitor) {
+          str += "<div class='col-xs-4'><div class='cliente'><div id='contactInfo'> ";
+          str += '<b> Visitor name: </b> &nbsp' + visitor.id + "<br/> <br/>";
+          str += '<b>Visitor phone number: </b> &nbsp' + visitor.name + "<br/> <br/>";
+          str += '<b>Visitor driver license number: </b> &nbsp' + visitor.visitorno + "<br/> <br/>";
+          str += '<b>Visitor Company name: </b> &nbsp' + visitor.desig + "<br/> <br/>";
+          str += '<b>Coming From: </b> &nbsp' + visitor.come + "<br/> <br/>";
+          str += "<div class='text-right'><i class='fa fa-edit edit' id=" + index + "></i> <i class='fa fa-trash remove'  id=" + index + "></i></div>";
+          str += "</div></div></div>";
+          $("#visitorData").html(str);
+        });
+     } 
+	 
+      /* Function to add visitor */
+      $("#addvisitor").click(function () {
+        var id = $("#id");
+        var name = $("#name");
+        var visitorno = $("#visitorno");
+        var desig = $("#desig");
+        var come = $("#come");
+
+        if (!validateFormData(id, name, visitorno, desig)) {
+          $("#addvisitorModel").modal();
+          $(".field").focus(function () {
+            $(".field").removeClass("ui-state-error");
+          });
+        } else {
+          $("#addvisitorModel").modal('hide');
+          var vid = $("#id").val();
+          var vname = $("#name").val();
+          var vvisitorno = $("#visitorno").val();
+          var vdesig = $("#desig").val();
+          var vcome = $("#come").val();
+    
+          visitorArr = JSON.parse(localStorage.getItem("visitors"));
+          if (visitorArr == null) {
+            visitorArr = [];
+          }
+          var visitorRef = new visitor(vid, vname, vvisitorno, vdesig, vcome);
+          visitorArr.push(visitorRef);
+          localStorage.setItem("visitors", JSON.stringify(visitorArr));
+          showvisitors();
+        }
+      });
+      /* Function to add visitor */
+      /* To validate form input params */
+      function validateFormData(id, name, visitorno, desig) {
+	  if (id.val().length < 5 || id.val().length > 20) {
+          $(".validateTips").html("<b><i>Length of Name must be between 5 and 20</i></b>");
+          name.addClass("ui-state-error");
+          return false;
+        }
+        else if (name.val().length < 10) {
+          $(".validateTips").text("Phone number must be 10 numbers");
+          name.addClass("ui-state-error");
+          return false;
+        } else if (desig.val().length < 3) {
+			$(".validateTips").html("<b>Company name not appropriate</b>");
+          city.addClass("ui-state-error");
+          return false;
+        } 
+        return true;
+      }
+      /* End of validation of form input params*/
+      /*Delete item  based on given position*/
+      function deletevisitor(position) {
+        visitorArr.splice(position, 1);
+        if (visitorArr.length == 0)
+          localStorage.setItem("visitors", JSON.stringify(null));
+        else
+          localStorage.setItem("visitors", JSON.stringify(visitorArr));
+      }
+      /* End of delete item */
+      /* Delete visitor event */
+      $("#visitorData").on('click', '.remove', function () {
+        var position = $(this).attr('id');
+        bootbox.confirm("Are you sure do you want delete <b>" + visitorArr[position].id + "</b> ? ", function (result) {
+          if (result) {
+            deletevisitor(position);
+            showvisitors();
+          }
+        });
+      });
+	  var position=-1;
+      /* End of delete visitor */
+      /* Edit item details */
+      $("#visitorData").on('click', '.edit', function () {
+        position = $(this).attr('id');
+        $("#updatevisitorModal").modal();
+        $(".validateTips").text("* All form fields are required.");
+        $("#editid").val(visitorArr[position].id);
+        $("#editname").val(visitorArr[position].name);
+        $("#editvisitorno").val(visitorArr[position].visitorno);
+        $("#editdesig").val(visitorArr[position].desig);
+        $("#editcome").val(visitorArr[position].come);
+      
+      });
+      /* End of edit visitor details */
+      /*Update item */
+      $("#btnUpdatevisitor").click(function () {
+        var uid = $("#editid");
+        var uname = $("#editname");
+        var uvisitorno = $("#editvisitorno");
+        var udesig = $("#editdesig");
+        var ucome = $("#editcome");
+		
+        if (!validateFormData(uid, uname, uvisitorno, udesig)) {
+          $("#updatevisitorModel").modal();
+          $(".field").focus(function () {
+            $(".field").removeClass("ui-state-error");
+          });
+        } else {
+		  
+          var uid = $("#editid").val();
+          var uname = $("#editname").val();
+          var uvisitorno = $("#editvisitorno").val();
+          var udesig = $("#editdesig").val();
+          var ucome = $("#editcome").val();
+          $.each(visitorArr,function (index,visitor) {
+			if(index==position)
+			{
+				visitor.id = uid;
+				visitor.name = uname;
+				visitor.visitorno = uvisitorno;
+				visitor.desig = udesig;
+				visitor.come = ucome;
+			}
+			})
+          
+          localStorage.setItem("visitors", JSON.stringify(visitorArr));
+          $("#updatevisitorModal").modal('hide');
+          bootbox.alert("Data is updated successfully....");
+          showvisitors();
+        }
+      });
+      /* End of update visitor */
+    
+
+    });
+
+  </script>
+  
+</body>
+
+</html>
